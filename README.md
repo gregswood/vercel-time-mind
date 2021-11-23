@@ -12,7 +12,7 @@ This project builds a time tracking app for the browser, allowing a user to star
     `npm run dev -- --host example.dev --cert mycert.crt --key mykey.key`
     - To set the port forward on the "port" argument:
     `npm run dev -- --port 9000`
-- Visit http://<domain>:<port> to develop your application. Live reload will work automatically.
+- Visit `https://<domain>:<port>` to develop your application. Live reload will work automatically.
 - As you work through the tasks, make sure to create commits
 - Push your branch to the origin remote when you are finished.
 
