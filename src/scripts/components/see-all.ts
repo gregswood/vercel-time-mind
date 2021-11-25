@@ -13,8 +13,7 @@ export class SeeAll {
     this.element.addEventListener("click", this.clickListener);
   }
 
-  handleClick(event: Event) {
-    console.log("Hi");
+  handleClick() {
     const incompleteTasks = document.querySelectorAll(
       "[data-incomplete-task]",
     ) as NodeListOf<HTMLElement>;
