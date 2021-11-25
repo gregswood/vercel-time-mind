@@ -1,0 +1,59 @@
+.incomplete-task {
+  display: flex;
+  background-color: rgb(238, 235, 235);
+  padding: 6px 12px;
+  border-radius: 12px;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.incomplete-task:hover {
+  cursor: pointer;
+}
+
+.incomplete-task--hidden {
+  display: none;
+}
+
+.incomplete-task__icon {
+  height: 36px;
+  background-color: rgb(223, 200, 0);
+  border-radius: 50%;
+  padding: 10px;
+}
+
+.incomplete-task__rows {
+  display: flex;
+  width: 80%;
+  flex-direction: column;
+}
+
+.incomplete-task__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 36px;
+}
+
+.incomplete-task__name {
+  margin: 0;
+  font-size: 1em;
+}
+
+.incomplete-task__time {
+  margin: 0;
+}
+
+.incomplete-task__category {
+  background-color: rgb(223, 200, 0);
+  font-size: 0.9em;
+  margin: 0;
+  padding: 3px 5px;
+  border-radius: 8px;
+  opacity: 0.6;
+}
+
+.incomplete-task__play {
+  height: 18px;
+}

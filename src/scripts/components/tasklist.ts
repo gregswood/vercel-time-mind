@@ -14,8 +14,7 @@ export class Example {
   }
 
   handleClick(event: Event) {
-    console.log(event);
-    console.log(document.querySelectorAll("p"));
+    console.log(document);
   }
 
   destroy() {

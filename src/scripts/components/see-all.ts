@@ -1,4 +1,4 @@
-export class Example {
+export class SeeAll {
   element: HTMLElement;
   clickListener: EventListener;
 
@@ -14,8 +14,14 @@ export class Example {
   }
 
   handleClick(event: Event) {
-    console.log(event);
-    console.log(document.querySelectorAll("p"));
+    console.log("Hi");
+    const incompleteTasks = document.querySelectorAll(
+      "[data-incomplete-task]",
+    ) as NodeListOf<HTMLElement>;
+    incompleteTasks.forEach((task) => {
+      console.log(task);
+      task.classList.toggle("incomplete-task--hidden");
+    });
   }
 
   destroy() {
