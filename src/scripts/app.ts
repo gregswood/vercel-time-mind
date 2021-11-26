@@ -65,23 +65,3 @@ if (backButtons.length > 0) {
     });
   });
 }
-
-const navigationButtons = document.querySelectorAll(
-  "[data-navigateButton]",
-) as NodeListOf<HTMLElement>;
-
-import("./components/page-changer").then(({ Navigator }) => {
-  navigationButtons.forEach((item) => {
-    new Navigator(item, item.dataset.page);
-  });
-});
-
-const navigationButtons = document.querySelectorAll(
-  "[data-navigateButton]",
-) as NodeListOf<HTMLElement>;
-
-import("./components/page-changer").then(({ Navigator }) => {
-  navigationButtons.forEach((item) => {
-    new Navigator(item, item.dataset.page);
-  });
-});
