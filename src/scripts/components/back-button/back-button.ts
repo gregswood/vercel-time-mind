@@ -1,4 +1,4 @@
-export class Example {
+export class BackButton {
   element: HTMLElement;
   clickListener: EventListener;
 
@@ -13,8 +13,16 @@ export class Example {
     this.element.addEventListener("click", this.clickListener);
   }
 
-  handleClick(event: Event) {
-    console.log(document);
+  handleClick() {
+    const timerPage = document.querySelector(
+      "[data-timer-page]",
+    ) as HTMLElement;
+    timerPage.classList.toggle("page--hidden");
+
+    const tasksPage = document.querySelector(
+      "[data-tasks-page]",
+    ) as HTMLElement;
+    tasksPage.classList.toggle("page--hidden");
   }
 
   destroy() {

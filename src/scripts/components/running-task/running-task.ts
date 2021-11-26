@@ -1,4 +1,4 @@
-export class SeeAll {
+export class RunningTask {
   element: HTMLElement;
   clickListener: EventListener;
 
@@ -13,15 +13,16 @@ export class SeeAll {
     this.element.addEventListener("click", this.clickListener);
   }
 
-  handleClick(event: Event) {
-    console.log("Hi");
-    const incompleteTasks = document.querySelectorAll(
-      "[data-incomplete-task]",
-    ) as NodeListOf<HTMLElement>;
-    incompleteTasks.forEach((task) => {
-      console.log(task);
-      task.classList.toggle("incomplete-task--hidden");
-    });
+  handleClick() {
+    const timerPage = document.querySelector(
+      "[data-timer-page]",
+    ) as HTMLElement;
+    timerPage.classList.toggle("page--hidden");
+
+    const tasksPage = document.querySelector(
+      "[data-tasks-page]",
+    ) as HTMLElement;
+    tasksPage.classList.toggle("page--hidden");
   }
 
   destroy() {
