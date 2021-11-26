@@ -1,4 +1,5 @@
-import storage from "../storage";
+import Storage from "../storage";
+const storage = new Storage();
 
 export class NewTaskForm {
   element: HTMLElement;
@@ -31,7 +32,7 @@ export class NewTaskForm {
 
     obj = {
       ...rest,
-      timeRemaining: totalSeconds,
+      remainingTime: totalSeconds,
       totalTime: totalSeconds,
       completed: false,
       running: false,
