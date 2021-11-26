@@ -1,4 +1,4 @@
-const formatTime = (time: number) => {
+export const formatTime = (time: number) => {
   const hours = Math.floor(time / 3600);
   let hourDisplay = hours.toString();
   const minutes = Math.floor((time % 3600) / 60);
