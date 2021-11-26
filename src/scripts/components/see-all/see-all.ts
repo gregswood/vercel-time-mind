@@ -14,12 +14,11 @@ export class SeeAll {
   }
 
   handleClick() {
-    const incompleteTasks = document.querySelectorAll(
-      "[data-incomplete-task]",
-    ) as NodeListOf<HTMLElement>;
-    incompleteTasks.forEach((task) => {
-      task.classList.toggle("incomplete-task--hidden");
-    });
+    const incompleteTasks = document.querySelector(
+      "[data-incomplete-tasks]",
+    ) as HTMLElement;
+
+    incompleteTasks.classList.toggle("incomplete-tasks--hidden");
   }
 
   destroy() {
