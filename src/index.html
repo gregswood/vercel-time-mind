@@ -15,7 +15,7 @@
     <script async type="module" src="./scripts/app.ts"></script>
   </head>
   <body>
-    <div class="page">
+    <div data-tasks-page class="page">
       <div class="page-header">
         <h1 class="page-header__page-title">Tasks</h1>
       </div>
@@ -113,6 +113,53 @@
           />
         </button>
         <button class="round-button round-button__new">+</button>
+        <button class="round-button round-button__nav">
+          <img
+            src="https://res.cloudinary.com/space48/image/upload/v1637852180/pie-chart_nccigm.png"
+          />
+        </button>
+      </div>
+    </div>
+
+    <div data-timer-page class="page page--hidden">
+      <div class="page-header">
+        <button class="back-button">
+          <img
+            src="https://res.cloudinary.com/space48/image/upload/v1637854386/back_dtxfto.png"
+          />
+        </button>
+        <h2 class="page-header__title">Timer</h2>
+        <div class="category">
+          <p class="category__text">Study</p>
+        </div>
+      </div>
+      <div class="task-title-box">
+        <img
+          src="https://res.cloudinary.com/space48/image/upload/v1637842127/time_r2npkx.png"
+          class="task-title-box__timer-icon"
+        />
+        <p class="task-title-box__title">Researching</p>
+      </div>
+      <div class="countdown-timer">
+        <h1>32:03</h1>
+      </div>
+      <div class="timer-controls">
+        <div class="timer-control">
+          <button class="round-button round-button__timer-control">||</button>
+          <p class="timer-control__label">Pause</p>
+        </div>
+        <div class="timer-control">
+          <button class="round-button round-button__timer-control">X</button>
+          <p class="timer-control__label">Delete</p>
+        </div>
+      </div>
+      <div class="buttons">
+        <button class="round-button round-button__nav">
+          <img
+            src="https://res.cloudinary.com/space48/image/upload/v1637842127/time_r2npkx.png"
+          />
+        </button>
+        <button class="round-button round-button__new"><p>+</p></button>
         <button class="round-button round-button__nav">
           <img
             src="https://res.cloudinary.com/space48/image/upload/v1637852180/pie-chart_nccigm.png"
