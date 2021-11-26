@@ -1,6 +1,49 @@
-<div [data-new-task-page] class="page">
+<div data-new-task-page class="page page--hidden">
   <div class="page-header">
+    <button [data-back-button] class="back-button">
+      <img
+        src="https://res.cloudinary.com/space48/image/upload/v1637854386/back_dtxfto.png"
+      />
+    </button>
     <h1 class="page-header__page-title">New Task</h1>
+    <div class="page-header__filler"></div>
   </div>
-  <div></div>
+  <form class="new-task-form">
+    <div class="new-task-form__item">
+      <label for="task-name">Task Name:</label>
+      <input class="new-task-form__input" name="task-name" />
+    </div>
+    <div class="new-task-form__item">
+      <label for="time">Hours:</label>
+      <input class="new-task-form__input new-task-form__time" name="hours" />
+    </div>
+    <div class="new-task-form__item">
+      <label for="time">Minutes:</label>
+      <input class="new-task-form__input new-task-form__time" name="minutes" />
+    </div>
+    <div class="new-task-form__item">
+      <label for="time">Seconds:</label>
+      <input class="new-task-form__input new-task-form__time" name="seconds" />
+    </div>
+    <div class="new-task-form__item">
+      <label for="category">Category:</label>
+      <select name="category" class="new-task-form__select">
+        <option value="work">Work</option>
+        <option value="personal">Personal</option>
+        <option value="workout">Workout</option>
+      </select>
+    </div>
+    <div class="new-task-form__item">
+      <label for="priority">Priority:</label>
+      <select name="priority" class="new-task-form__select">
+        <option value="high">High</option>
+        <option value="medium">Medium</option>
+        <option value="laptop_wdgxmp">Low</option>
+      </select>
+    </div>
+    <input type="submit" class="new-task-form__submit" />
+  </form>
+  <div class="page__filler"></div>
+  <div class="page__filler"></div>
+  <div class="page__filler"></div>
 </div>

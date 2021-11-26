@@ -1,4 +1,4 @@
-export class BackButton {
+export class TasksButton {
   element: HTMLElement;
   clickListener: EventListener;
 
@@ -14,6 +14,7 @@ export class BackButton {
   }
 
   handleClick() {
+    console.log("punk");
     const timerPage = document.querySelector(
       "[data-timer-page]",
     ) as HTMLElement;
