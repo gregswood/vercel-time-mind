@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/app.pcss" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <script async type="module" src="./scripts/app.ts"></script>
+  </head>
+  <body>
+    <div class="page1 page2">
+      <div class="page1" hidden>
+          <h1>This is page 1</h1>
+          <p>Welcome to my page 1</p>
+      </div>
+      <div class="page2" hidden>
+          <h1>This is page 2</h1>
+          <p>Welcome to my page 2</p>
+      </div>
+      <div class="page1 page2">
+          <p data-navigateButton data-page="page1">To Page 1</p>
+          <p data-navigateButton data-page="page2">To Page 2</p>
+      </div>
+    </div>
+  </body>
+</html>
