@@ -107,20 +107,81 @@
         </div>
       </div>
       <div class="buttons">
-        <button class="round-button round-button__nav">
+        <button data-tasks-button class="round-button round-button__nav">
           <img
             src="https://res.cloudinary.com/space48/image/upload/v1637842127/time_r2npkx.png"
           />
         </button>
-        <button class="round-button round-button__new">+</button>
-        <button class="round-button round-button__nav">
+        <button data-new-task-button class="round-button round-button__new">
+          <img
+            src="https://res.cloudinary.com/space48/image/upload/v1637928754/plus_3_mmj55a.png"
+          />
+        </button>
+        <button data-info-button class="round-button round-button__nav">
           <img
             src="https://res.cloudinary.com/space48/image/upload/v1637852180/pie-chart_nccigm.png"
           />
         </button>
       </div>
     </div>
-
+    <div data-new-task-page class="page page--hidden">
+      <div class="page-header">
+        <button [data-back-button] class="back-button">
+          <img
+            src="https://res.cloudinary.com/space48/image/upload/v1637854386/back_dtxfto.png"
+          />
+        </button>
+        <h1 class="page-header__page-title">New Task</h1>
+        <div class="page-header__filler"></div>
+      </div>
+      <form class="new-task-form">
+        <div class="new-task-form__item">
+          <label class="new-task-form__label" for="task-name">Task Name:</label>
+          <input class="new-task-form__input" name="task-name" />
+        </div>
+        <div class="new-task-form__item">
+          <label class="new-task-form__label" for="time">Hours:</label>
+          <input
+            class="new-task-form__input new-task-form__time"
+            name="hours"
+          />
+        </div>
+        <div class="new-task-form__item">
+          <label class="new-task-form__label" for="time">Minutes:</label>
+          <input
+            class="new-task-form__input new-task-form__time"
+            name="minutes"
+          />
+        </div>
+        <div class="new-task-form__item">
+          <label class="new-task-form__label" for="time">Seconds:</label>
+          <input
+            class="new-task-form__input new-task-form__time"
+            name="seconds"
+          />
+        </div>
+        <div class="new-task-form__item">
+          <label class="new-task-form__label" for="category">Category:</label>
+          <select name="category" class="new-task-form__select">
+            <option value="work">Work</option>
+            <option value="personal">Personal</option>
+            <option value="workout">Workout</option>
+          </select>
+        </div>
+        <div class="new-task-form__item">
+          <label class="new-task-form__label" for="priority">Priority:</label>
+          <select name="priority" class="new-task-form__select">
+            <option value="high">High</option>
+            <option value="medium">Medium</option>
+            <option value="laptop_wdgxmp">Low</option>
+          </select>
+        </div>
+        <input type="submit" class="new-task-form__submit" />
+      </form>
+      <div class="page__filler"></div>
+      <div class="page__filler"></div>
+      <div class="page__filler"></div>
+    </div>
     <div data-timer-page class="page page--hidden">
       <div class="page-header">
         <button class="back-button">
@@ -145,22 +206,92 @@
       </div>
       <div class="timer-controls">
         <div class="timer-control">
-          <button class="round-button round-button__timer-control">||</button>
+          <button class="round-button round-button__timer-control">
+            <img
+              src="https://res.cloudinary.com/space48/image/upload/v1637927613/pause_hen8g3.png"
+            />
+          </button>
           <p class="timer-control__label">Pause</p>
         </div>
         <div class="timer-control">
-          <button class="round-button round-button__timer-control">X</button>
+          <button class="round-button round-button__timer-control">
+            <img
+              src="https://res.cloudinary.com/space48/image/upload/v1637927613/x_joorz2.png"
+            />
+          </button>
           <p class="timer-control__label">Delete</p>
         </div>
       </div>
       <div class="buttons">
-        <button class="round-button round-button__nav">
+        <button data-tasks-button class="round-button round-button__nav">
           <img
             src="https://res.cloudinary.com/space48/image/upload/v1637842127/time_r2npkx.png"
           />
         </button>
-        <button class="round-button round-button__new"><p>+</p></button>
-        <button class="round-button round-button__nav">
+        <button data-new-task-button class="round-button round-button__new">
+          <img
+            src="https://res.cloudinary.com/space48/image/upload/v1637928754/plus_3_mmj55a.png"
+          />
+        </button>
+        <button data-info-button class="round-button round-button__nav">
+          <img
+            src="https://res.cloudinary.com/space48/image/upload/v1637852180/pie-chart_nccigm.png"
+          />
+        </button>
+      </div>
+    </div>
+    <div data-info-page class="page page--hidden">
+      <div class="page-header">
+        <button class="back-button">
+          <img
+            src="https://res.cloudinary.com/space48/image/upload/v1637854386/back_dtxfto.png"
+          />
+        </button>
+        <h1 class="page-header__page-title">Tasks</h1>
+        <div></div>
+      </div>
+      <div class="info">
+        <div class="info__block">
+          <div class="info__header">
+            <img
+              class="info__icon"
+              src="https://res.cloudinary.com/space48/image/upload/v1637927613/check_u58voo.png"
+            />
+            <h4 class="info__title">Tasks Completed</h4>
+          </div>
+          <p class="info__value">12</p>
+        </div>
+        <div class="info__block">
+          <div class="info__header">
+            <img
+              class="info__icon"
+              src="https://res.cloudinary.com/space48/image/upload/v1637927613/hourglass_mbpbt4.png"
+            />
+            <h4 class="info__title">Time Duration</h4>
+          </div>
+          <p class="info__value">1hr 46m</p>
+        </div>
+      </div>
+      <div class="period-toggle">
+        <button class="period-toggle__option">Day</button>
+        <button class="period-toggle__option period-toggle__option--selected">
+          Week
+        </button>
+        <button class="period-toggle__option">Month</button>
+      </div>
+      <div class="graph"></div>
+      <div class="buttons">
+        <button data-tasks-button class="round-button round-button__nav">
+          <img
+            src="https://res.cloudinary.com/space48/image/upload/v1637842127/time_r2npkx.png"
+          />
+        </button>
+        <button data-new-task-button class="round-button round-button__new">
+          <img
+            src="https://res.cloudinary.com/space48/image/upload/v1637928754/plus_3_mmj55a.png"
+          />
+        </button>
+        <button data-info-button class="round-button round-button__nav">
           <img
             src="https://res.cloudinary.com/space48/image/upload/v1637852180/pie-chart_nccigm.png"
           />

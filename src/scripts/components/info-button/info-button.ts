@@ -1,4 +1,4 @@
-export class BackButton {
+export class InfoButton {
   element: HTMLElement;
   clickListener: EventListener;
 
@@ -24,13 +24,13 @@ export class BackButton {
     ) as HTMLElement;
     newTaskPage.classList.add("page--hidden");
 
-    const infoPage = document.querySelector("[data-info-page]") as HTMLElement;
-    infoPage.classList.add("page--hidden");
-
     const tasksPage = document.querySelector(
       "[data-tasks-page]",
     ) as HTMLElement;
-    tasksPage.classList.remove("page--hidden");
+    tasksPage.classList.add("page--hidden");
+
+    const infoPage = document.querySelector("[data-info-page]") as HTMLElement;
+    infoPage.classList.remove("page--hidden");
   }
 
   destroy() {
