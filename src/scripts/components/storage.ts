@@ -1,3 +1,5 @@
+import Task from "../task";
+
 export default class Storage {
   readAll() {
     const titleArray = [...Array(localStorage.length).keys()]
