@@ -1,3 +1,5 @@
+import Storage from "./components/storage";
+const storage = new Storage();
 import { renderIncompleteTasks } from "./components/incomplete-tasks/incomplete-tasks";
 
 const seeAll = document.querySelector("[data-see-all]") as HTMLElement;
