@@ -1,4 +1,4 @@
-type Task = {
+export type Task = {
   taskName: string;
   category: "work" | "workout" | "personal";
   priority: "low" | "medium" | "high";

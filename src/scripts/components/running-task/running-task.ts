@@ -1,3 +1,5 @@
+import { createTimer } from "../countdown-timer/animated-clock";
+
 export class RunningTask {
   element: HTMLElement;
   clickListener: EventListener;
@@ -23,6 +25,8 @@ export class RunningTask {
       "[data-tasks-page]",
     ) as HTMLElement;
     tasksPage.classList.toggle("page--hidden");
+
+    createTimer();
   }
 
   destroy() {
