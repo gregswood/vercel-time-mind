@@ -3,20 +3,20 @@ export default class Storage {
     const titleArray = [...Array(localStorage.length).keys()]
       .slice()
       .map((i) => localStorage.key(i));
-    const timers = titleArray.map((i) => JSON.parse(localStorage.getItem(i)));
-    return timers;
+    const tasks = titleArray.map((i) => JSON.parse(localStorage.getItem(i)));
+    return tasks;
   }
   readOne(name: string) {
-    const timer = JSON.parse(localStorage.getItem(name));
-    return timer;
+    const task = JSON.parse(localStorage.getItem(name));
+    return task;
   }
-  addTimer(object: task) {
-    localStorage.setItem(object.name, JSON.stringify(object));
+  addTask(object: Task) {
+    localStorage.setItem(object.taskName, JSON.stringify(object));
   }
   deleteTime(name: string) {
     localStorage.deleteItem(name);
   }
-  updateTimer(name: string, key: string, newValue: Partial<task>) {
+  updateTimer(name: string, key: string, newValue: Partial<Task>) {
     const timer = JSON.parse(localStorage.getItem(name));
     timer[key] = newValue;
     localStorage.setItem(name, JSON.stringify(timer));

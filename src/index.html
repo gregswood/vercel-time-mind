@@ -74,11 +74,20 @@
         <h1 class="page-header__page-title">New Task</h1>
         <div class="page-header__filler"></div>
       </div>
-      <form class="new-task-form">
+      <form data-new-task-form class="new-task-form">
         <div class="new-task-form__item">
-          <label class="new-task-form__label" for="task-name">Task Name:</label>
-          <input class="new-task-form__input" name="task-name" />
+          <label class="new-task-form__label" for="taskName">Task Name:</label>
+          <input class="new-task-form__input" name="taskName" />
         </div>
+        <div class="new-task-form__item">
+          <label class="new-task-form__label" for="scheduledDate">Date:</label>
+          <input
+            class="new-task-form__input"
+            type="date"
+            name="scheduledDate"
+          />
+        </div>
+
         <div class="new-task-form__item">
           <label class="new-task-form__label" for="time">Hours:</label>
           <input
@@ -116,6 +125,15 @@
             <option value="laptop_wdgxmp">Low</option>
           </select>
         </div>
+        <div class="new-task-form__item">
+          <label class="new-task-form__label" for="iconType">Icon:</label>
+          <select name="iconType" class="new-task-form__select">
+            <option value="weights">Weights</option>
+            <option value="book">Book</option>
+            <option value="computer">Computer</option>
+          </select>
+        </div>
+
         <input type="submit" class="new-task-form__submit" />
       </form>
       <div class="page__filler"></div>

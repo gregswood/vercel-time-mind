@@ -1,4 +1,4 @@
-<div data-info-page class="page">
+<div data-info-page class="page page--hidden">
   <div class="page-header">
     <button class="back-button">
       <img
@@ -39,19 +39,20 @@
   </div>
   <div class="graph"></div>
   <div class="buttons">
-    <RoundButton class="round-button round-button__nav">
+    <button data-tasks-button class="round-button round-button__nav">
       <img
         src="https://res.cloudinary.com/space48/image/upload/v1637842127/time_r2npkx.png"
       />
-    </RoundButton>
-    <RoundButton class="round-button round-button__new"
-      ><img
+    </button>
+    <button data-new-task-button class="round-button round-button__new">
+      <img
         src="https://res.cloudinary.com/space48/image/upload/v1637928754/plus_3_mmj55a.png"
-    /></RoundButton>
-    <RoundButton class="round-button round-button__nav">
+      />
+    </button>
+    <button data-info-button class="round-button round-button__nav">
       <img
         src="https://res.cloudinary.com/space48/image/upload/v1637852180/pie-chart_nccigm.png"
       />
-    </RoundButton>
+    </button>
   </div>
 </div>
