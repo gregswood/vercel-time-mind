@@ -1,3 +1,5 @@
+import { renderIncompleteTasks } from "../incomplete-tasks/incomplete-tasks";
+
 export class BackButton {
   element: HTMLElement;
   clickListener: EventListener;
@@ -31,8 +33,9 @@ export class BackButton {
       "[data-tasks-page]",
     ) as HTMLElement;
     tasksPage.classList.remove("page--hidden");
-  }
 
+    renderIncompleteTasks();
+  }
   destroy() {
     this.element.removeEventListener("click", this.clickListener);
   }

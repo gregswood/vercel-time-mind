@@ -1,3 +1,5 @@
+import { renderIncompleteTasks } from "./components/incomplete-tasks/incomplete-tasks";
+
 const seeAll = document.querySelector("[data-see-all]") as HTMLElement;
 
 if (seeAll) {
@@ -65,6 +67,8 @@ if (backButtons.length > 0) {
     });
   });
 }
+
+renderIncompleteTasks();
 
 const newTaskForm = document.querySelector(
   "[data-new-task-form]",
