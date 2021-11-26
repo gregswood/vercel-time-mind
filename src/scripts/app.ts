@@ -65,3 +65,13 @@ if (backButtons.length > 0) {
     });
   });
 }
+
+const newTaskForm = document.querySelector(
+  "[data-new-task-form]",
+) as HTMLFormElement;
+
+if (newTaskForm) {
+  import("./components/new-task-form/new-task-form").then(({ NewTaskForm }) => {
+    new NewTaskForm(newTaskForm);
+  });
+}
