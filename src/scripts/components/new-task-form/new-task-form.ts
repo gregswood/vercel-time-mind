@@ -1,4 +1,6 @@
+import { renderIncompleteTasks } from "../incomplete-tasks/incomplete-tasks";
 import Storage from "../storage";
+import { renderTaskDays } from "../task-day/task-day";
 const storage = new Storage();
 
 export class NewTaskForm {
@@ -41,6 +43,8 @@ export class NewTaskForm {
     storage.addTask(obj);
 
     form.reset();
+
+    renderTaskDays();
 
     const timerPage = document.querySelector(
       "[data-timer-page]",

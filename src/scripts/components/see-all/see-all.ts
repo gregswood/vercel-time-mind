@@ -13,9 +13,13 @@ export class SeeAll {
     this.element.addEventListener("click", this.clickListener);
   }
 
-  handleClick() {
+  handleClick(event: Event) {
+    const target = event.target as HTMLElement;
+
+    const date = target.dataset.date;
+
     const incompleteTasks = document.querySelector(
-      "[data-incomplete-tasks]",
+      `[data-task_date="${date}"]`,
     ) as HTMLElement;
 
     incompleteTasks.classList.toggle("incomplete-tasks--hidden");

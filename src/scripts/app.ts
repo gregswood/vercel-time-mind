@@ -1,12 +1,16 @@
-import Storage from "./components/storage";
-const storage = new Storage();
-import { renderIncompleteTasks } from "./components/incomplete-tasks/incomplete-tasks";
+import { renderTaskDays } from "./components/task-day/task-day";
 
-const seeAll = document.querySelector("[data-see-all]") as HTMLElement;
+renderTaskDays();
 
-if (seeAll) {
+const seeAlls = document.querySelectorAll(
+  "[data-see_all]",
+) as NodeListOf<HTMLElement>;
+
+if (seeAlls.length > 0) {
   import("./components/see-all/see-all").then(({ SeeAll }) => {
-    new SeeAll(seeAll);
+    seeAlls.forEach((seeAll) => {
+      new SeeAll(seeAll);
+    });
   });
 }
 
@@ -69,8 +73,6 @@ if (backButtons.length > 0) {
     });
   });
 }
-
-renderIncompleteTasks();
 
 const newTaskForm = document.querySelector(
   "[data-new-task-form]",
