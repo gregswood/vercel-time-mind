@@ -1,4 +1,8 @@
 import { renderTaskDays } from "./components/task-day/task-day";
+import Storage from "./components/storage";
+const storage = new Storage();
+import { renderRunningTask } from "./components/running-task/running-task";
+import { createTimer } from "./components/countdown-timer/animated-clock";
 
 renderTaskDays();
 
@@ -74,6 +78,13 @@ if (backButtons.length > 0) {
   });
 }
 
+export let myTimer: NodeJS.Timer;
+
+renderRunningTask();
+if (storage.readAll().filter((element) => element.running).length) {
+  const myTimer = createTimer();
+}
+
 const newTaskForm = document.querySelector(
   "[data-new-task-form]",
 ) as HTMLFormElement;
@@ -81,5 +92,17 @@ const newTaskForm = document.querySelector(
 if (newTaskForm) {
   import("./components/new-task-form/new-task-form").then(({ NewTaskForm }) => {
     new NewTaskForm(newTaskForm);
+  });
+}
+
+const playButtons = document.querySelectorAll(
+  ".playbutton",
+) as NodeListOf<HTMLImageElement>;
+
+if (playButtons.length > 0) {
+  import("./components/play-button/play-button").then(({ PlayButton }) => {
+    playButtons.forEach((playButton) => {
+      new PlayButton(playButton);
+    });
   });
 }

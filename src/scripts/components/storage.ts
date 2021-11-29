@@ -18,7 +18,11 @@ export default class Storage {
   deleteTime(name: string) {
     localStorage.deleteItem(name);
   }
-  updateTimer(name: string, key: string, newValue: Partial<Task>) {
+  updateTimer(
+    name: string,
+    key: string,
+    newValue: "string" | number | boolean,
+  ) {
     const timer = JSON.parse(localStorage.getItem(name));
     timer[key] = newValue;
     localStorage.setItem(name, JSON.stringify(timer));

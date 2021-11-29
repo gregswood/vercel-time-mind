@@ -1,5 +1,5 @@
-import { formatTime } from "../countdown-timer/animated-clock";
 import { Task } from "../../task";
+import { formatTime } from "../countdown-timer/animated-clock";
 
 export const renderIncompleteTasks = (target, tasks) => {
   tasks.forEach((element: Task) => {
@@ -21,7 +21,8 @@ export const renderIncompleteTasks = (target, tasks) => {
           <p class="category__text">${element.category}</p>
         </div>
         <img
-          class="incomplete-task__play"
+          data-task="${element.taskName}" 
+          class="incomplete-task__play playbutton"
           src="https://res.cloudinary.com/space48/image/upload/v1637839411/play_xgbctx.png"
         />
       </div>
@@ -29,4 +30,16 @@ export const renderIncompleteTasks = (target, tasks) => {
   </div>`;
     target.appendChild(div);
   });
+
+  const playButtons = document.querySelectorAll(
+    ".playbutton",
+  ) as NodeListOf<HTMLImageElement>;
+  console.log(playButtons);
+  if (playButtons.length > 0) {
+    import("../play-button/play-button").then(({ PlayButton }) => {
+      playButtons.forEach((playButton) => {
+        new PlayButton(playButton);
+      });
+    });
+  }
 };
