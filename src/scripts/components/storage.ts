@@ -8,7 +8,7 @@ export default class Storage {
     const tasks = titleArray.map((i) => JSON.parse(localStorage.getItem(i)));
     return tasks;
   }
-  readOne(name: string) {
+  readOne(name: string): Task {
     const task = JSON.parse(localStorage.getItem(name));
     return task;
   }

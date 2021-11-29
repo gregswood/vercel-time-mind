@@ -1,4 +1,5 @@
 import { Task } from "../../task";
+import { renderTimerPage } from "../render-timer-page/render-timer-page";
 import { renderRunningTask } from "../running-task/running-task";
 import Storage from "../storage";
 const storage = new Storage();
@@ -64,6 +65,7 @@ export const createTimer = () => {
   };
 
   document.getElementById("animation").innerHTML = `...`;
+  renderTimerPage();
   const myTimer = startTimer();
 
   document.getElementById("animation").innerHTML = `

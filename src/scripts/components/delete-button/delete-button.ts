@@ -1,6 +1,7 @@
 import Storage from "../storage";
 import { Task } from "../../task";
 import { renderRunningTask } from "../running-task/running-task";
+import { stopTimer } from "../countdown-timer/animated-clock";
 const storage = new Storage();
 
 export class DeleteButton {
@@ -22,9 +23,9 @@ export class DeleteButton {
     const data = storage.readAll() as Task[];
 
     const runningTask = data.filter((task) => task.running)[0];
+    stopTimer();
 
     storage.deleteTime(runningTask.taskName);
-
     renderRunningTask();
 
     const timerPage = document.querySelector(
