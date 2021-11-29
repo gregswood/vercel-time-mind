@@ -2,7 +2,6 @@ import { renderTaskDays } from "./components/task-day/task-day";
 import Storage from "./components/storage";
 const storage = new Storage();
 import { renderRunningTask } from "./components/running-task/running-task";
-import { createTimer } from "./components/countdown-timer/animated-clock";
 
 renderTaskDays();
 renderRunningTask();
@@ -98,5 +97,12 @@ if (playButtons.length > 0) {
     playButtons.forEach((playButton) => {
       new PlayButton(playButton);
     });
+  });
+}
+
+const pauseButton = document.getElementById("pause") as HTMLFormElement;
+if (pauseButton) {
+  import("./components/timer-controls/pause").then(({ PauseButton }) => {
+    new PauseButton(pauseButton);
   });
 }
