@@ -1,22 +1,12 @@
 import { renderTaskDays } from "./components/task-day/task-day";
-import Storage from "./components/storage";
-const storage = new Storage();
 import { renderRunningTask } from "./components/running-task/running-task";
+import { renderInfo } from "./components/info-block/info-block";
+import { setMaxDate } from "./components/new-task-form/new-task-form";
 
 renderTaskDays();
+renderInfo();
+setMaxDate();
 renderRunningTask();
-
-const seeAlls = document.querySelectorAll(
-  "[data-see_all]",
-) as NodeListOf<HTMLElement>;
-
-if (seeAlls.length > 0) {
-  import("./components/see-all/see-all").then(({ SeeAll }) => {
-    seeAlls.forEach((seeAll) => {
-      new SeeAll(seeAll);
-    });
-  });
-}
 
 const runningTask = document.querySelector(
   "[data-running-task]",
@@ -106,3 +96,19 @@ if (pauseButton) {
     new PauseButton(pauseButton);
   });
 }
+const deleteButton = document.querySelector(
+  "[data-delete-task]",
+) as HTMLElement;
+
+import("./components/delete-button/delete-button").then(({ DeleteButton }) => {
+  new DeleteButton(deleteButton);
+});
+
+const periodButtons = document.getElementsByClassName(
+  "period-toggle__option",
+) as HTMLCollectionOf<HTMLElement>;
+import("./components/period-toggle/period-toggle").then(({ PeriodToggle }) => {
+  Array.from(periodButtons).forEach((button) => {
+    new PeriodToggle(button);
+  });
+});

@@ -26,10 +26,9 @@ export class NewTaskForm {
 
     let obj: any = Object.fromEntries(formData.entries());
 
-    const { hours, minutes, seconds, ...rest } = obj;
+    const { hours, minutes, ...rest } = obj;
 
-    const totalSeconds =
-      Number(seconds) + Number(minutes) * 60 + Number(hours) * 60 * 60;
+    const totalSeconds = Number(minutes) * 60 + Number(hours) * 60 * 60;
 
     obj = {
       ...rest,
@@ -67,3 +66,23 @@ export class NewTaskForm {
     this.element.removeEventListener("submit", this.clickListener);
   }
 }
+
+export const setMaxDate = () => {
+  const today = new Date();
+  const dd = today.getDate();
+  const mm = today.getMonth() + 1; //January is 0!
+  const yyyy = today.getFullYear().toString();
+
+  let dayString = dd.toString();
+  if (dd < 10) {
+    dayString = "0" + dd;
+  }
+
+  let monthString = mm.toString();
+  if (mm < 10) {
+    monthString = "0" + mm;
+  }
+
+  const dateString = yyyy + "-" + monthString + "-" + dayString;
+  document.getElementById("date-field").setAttribute("min", dateString);
+};

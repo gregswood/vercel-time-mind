@@ -16,7 +16,7 @@ export default class Storage {
     localStorage.setItem(object.taskName, JSON.stringify(object));
   }
   deleteTime(name: string) {
-    localStorage.deleteItem(name);
+    localStorage.removeItem(name);
   }
   updateTimer(
     name: string,

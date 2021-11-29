@@ -5,6 +5,7 @@ export type Task = {
   totalTime: number;
   remainingTime: number;
   scheduledDate: string;
+  completedDate: string;
   iconType: "weights" | "book" | "computer";
   running: NodeJS.Timer | undefined;
   completed: boolean;

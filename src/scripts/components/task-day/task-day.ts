@@ -1,5 +1,7 @@
 import { renderIncompleteTasks } from "../incomplete-tasks/incomplete-tasks";
+import { Task } from "../../task";
 import Storage from "../storage";
+import { datediff } from "../../../utils/date";
 const storage = new Storage();
 
 export const renderTaskDays = () => {
@@ -46,21 +48,15 @@ export const renderTaskDays = () => {
     const h2 = document.createElement("h2");
     h2.classList.add("task-day__name");
 
+    const difference = datediff(new Date(), new Date(day[0])) + 1;
+
     let dayname = day[0].toString();
-
-    const today = new Date();
-    const date = new Date(day[0]);
-    const DAY = 1000 * 60 * 60 * 24;
-    const difference = Math.round(
-      Math.abs(date.valueOf() - today.valueOf()) / DAY,
-    );
-
     if (difference === 0) {
       dayname = "Today";
     } else if (difference == 1) {
       dayname = "Tomorrow";
     }
-    h2.innerHTML = dayname;
+    h2.textContent = dayname;
     taskRow.appendChild(h2);
 
     // add button to header
@@ -68,7 +64,7 @@ export const renderTaskDays = () => {
     button.dataset.date = day[0];
     button.dataset["see_all"] = "";
     button.classList.add("task-day__see-all");
-    button.innerHTML = "See All";
+    button.textContent = "See All";
     taskRow.appendChild(button);
 
     taskDay.appendChild(taskRow);
@@ -79,7 +75,7 @@ export const renderTaskDays = () => {
     incompleteTasks.dataset["task_date"] = day[0];
 
     // render incomplete tasks to div
-    renderIncompleteTasks(incompleteTasks, day[1]);
+    renderIncompleteTasks(incompleteTasks, day[1] as Task[]);
 
     taskDay.appendChild(incompleteTasks);
 
@@ -96,5 +92,17 @@ export const renderTaskDays = () => {
         });
       });
     }
+  }
+
+  const seeAlls = document.querySelectorAll(
+    "[data-see_all]",
+  ) as NodeListOf<HTMLElement>;
+
+  if (seeAlls.length > 0) {
+    import("../see-all/see-all").then(({ SeeAll }) => {
+      seeAlls.forEach((seeAll) => {
+        new SeeAll(seeAll);
+      });
+    });
   }
 };

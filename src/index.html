@@ -124,37 +124,38 @@
       <form data-new-task-form class="new-task-form">
         <div class="new-task-form__item">
           <label class="new-task-form__label" for="taskName">Task Name:</label>
-          <input class="new-task-form__input" name="taskName" />
+          <input required class="new-task-form__input" name="taskName" />
         </div>
         <div class="new-task-form__item">
           <label class="new-task-form__label" for="scheduledDate">Date:</label>
           <input
+            id="date-field"
             class="new-task-form__input"
             type="date"
             name="scheduledDate"
+            required
           />
         </div>
 
         <div class="new-task-form__item">
-          <label class="new-task-form__label" for="time">Hours:</label>
-          <input
-            class="new-task-form__input new-task-form__time"
-            name="hours"
-          />
-        </div>
-        <div class="new-task-form__item">
-          <label class="new-task-form__label" for="time">Minutes:</label>
-          <input
-            class="new-task-form__input new-task-form__time"
-            name="minutes"
-          />
-        </div>
-        <div class="new-task-form__item">
-          <label class="new-task-form__label" for="time">Seconds:</label>
-          <input
-            class="new-task-form__input new-task-form__time"
-            name="seconds"
-          />
+          <label class="new-task-form__label">Duration:</label>
+          <div class="new-task-form__time">
+            <label class="new-task-form__label" for="hours">Hours:</label>
+            <input
+              class="new-task-form__input new-task-form__time-input"
+              name="hours"
+              type="number"
+              max="23"
+            />
+            <div></div>
+            <label class="new-task-form__label" for="minutes">Minutes:</label>
+            <input
+              class="new-task-form__input new-task-form__time-input"
+              name="minutes"
+              type="number"
+              max="59"
+            />
+          </div>
         </div>
         <div class="new-task-form__item">
           <label class="new-task-form__label" for="category">Category:</label>
@@ -217,7 +218,14 @@
           <p class="timer-control__label">Pause</p>
         </div>
         <div class="timer-control">
+<<<<<<< HEAD
           <button id="delete" class="round-button round-button__timer-control">
+=======
+          <button
+            data-delete-task
+            class="round-button round-button__timer-control"
+          >
+>>>>>>> 757ad77ecd386b3fd6635ce1fd21b32f93556f6e
             <img
               src="https://res.cloudinary.com/space48/image/upload/v1637927613/x_joorz2.png"
             />
@@ -262,7 +270,7 @@
             />
             <h4 class="info__title">Tasks Completed</h4>
           </div>
-          <p class="info__value">12</p>
+          <p data-tasks-completed class="info__value">12</p>
         </div>
         <div class="info__block">
           <div class="info__header">
@@ -272,15 +280,18 @@
             />
             <h4 class="info__title">Time Duration</h4>
           </div>
-          <p class="info__value">1hr 46m</p>
+          <p data-time-duration class="info__value">1hr 46m</p>
         </div>
       </div>
       <div class="period-toggle">
-        <button class="period-toggle__option">Day</button>
-        <button class="period-toggle__option period-toggle__option--selected">
+        <button data-period="1" class="period-toggle__option">Day</button>
+        <button
+          data-period="7"
+          class="period-toggle__option period-toggle__option--selected"
+        >
           Week
         </button>
-        <button class="period-toggle__option">Month</button>
+        <button data-period="30" class="period-toggle__option">Month</button>
       </div>
       <div class="graph"></div>
       <div class="buttons">

@@ -1,7 +1,7 @@
 import { Task } from "../../task";
 import { formatTime } from "../countdown-timer/animated-clock";
 
-export const renderIncompleteTasks = (target, tasks) => {
+export const renderIncompleteTasks = (target: HTMLElement, tasks: Task[]) => {
   tasks.forEach((element: Task) => {
     const div = document.createElement("div");
     div.innerHTML = `<div data-incomplete-task class="incomplete-task">
@@ -34,7 +34,6 @@ export const renderIncompleteTasks = (target, tasks) => {
   const playButtons = document.querySelectorAll(
     ".playbutton",
   ) as NodeListOf<HTMLImageElement>;
-  console.log(playButtons);
   if (playButtons.length > 0) {
     import("../play-button/play-button").then(({ PlayButton }) => {
       playButtons.forEach((playButton) => {
