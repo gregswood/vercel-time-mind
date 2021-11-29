@@ -1,11 +1,13 @@
+import { Task } from "../../task";
 import { formatTime } from "../countdown-timer/animated-clock";
 import Storage from "../../components/storage";
 const storage = new Storage();
 
 export const renderIncompleteTasks = () => {
   const data = storage.readAll();
-  const incompleteTasks = data.filter((element) => !element.completed);
-
+  const incompleteTasks = data.filter(
+    (element) => !element.completed && !element.running,
+  );
   const container = document.getElementById("incomplete-task-list");
   container.innerHTML = "";
   incompleteTasks.forEach((element: Task) => {
@@ -27,7 +29,8 @@ export const renderIncompleteTasks = () => {
           <p class="category__text">${element.category}</p>
         </div>
         <img
-          class="incomplete-task__play"
+          data-task="${element.taskName}" 
+          class="incomplete-task__play playbutton"
           src="https://res.cloudinary.com/space48/image/upload/v1637839411/play_xgbctx.png"
         />
       </div>
@@ -35,4 +38,16 @@ export const renderIncompleteTasks = () => {
   </div>`;
     container.appendChild(div);
   });
+
+  const playButtons = document.querySelectorAll(
+    ".playbutton",
+  ) as NodeListOf<HTMLImageElement>;
+  console.log(playButtons);
+  if (playButtons.length > 0) {
+    import("../play-button/play-button").then(({ PlayButton }) => {
+      playButtons.forEach((playButton) => {
+        new PlayButton(playButton);
+      });
+    });
+  }
 };

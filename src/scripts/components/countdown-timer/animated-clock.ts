@@ -1,4 +1,5 @@
 import { Task } from "../../task";
+import { renderRunningTask } from "../running-task/running-task";
 import Storage from "../storage";
 const storage = new Storage();
 
@@ -28,7 +29,7 @@ export const createTimer = () => {
   let timePassed = runningTask[0].totalTime - runningTask[0].remainingTime;
   let timeLeft = runningTask[0].remainingTime;
 
-  let timerInterval = null;
+  let timerInterval: null | NodeJS.Timer = null;
 
   const setCircleDashArray = () => {
     const circleDashArray = `${(calculateTimeFraction() * 283).toFixed(0)} 283`;
@@ -40,14 +41,21 @@ export const createTimer = () => {
   const startTimer = () => {
     timerInterval = setInterval(() => {
       timePassed = timePassed += 1;
-      if (TIME_LIMIT - timePassed < 0) timeLeft = 0;
-      else {
+      if (TIME_LIMIT - timePassed < 0) {
+        timeLeft = 0;
+        storage.updateTimer(runningTask[0].taskName, "remainingTime", timeLeft);
+        storage.updateTimer(runningTask[0].taskName, "running", false);
+        storage.updateTimer(runningTask[0].taskName, "completed", true);
+      } else {
         timeLeft = TIME_LIMIT - timePassed;
+        storage.updateTimer(runningTask[0].taskName, "remainingTime", timeLeft);
+        renderRunningTask();
       }
       document.getElementById("timer-label").innerHTML = formatTime(timeLeft);
 
       setCircleDashArray();
     }, 1000);
+    return timerInterval;
   };
 
   const calculateTimeFraction = (): number => {
@@ -56,7 +64,7 @@ export const createTimer = () => {
   };
 
   document.getElementById("animation").innerHTML = `...`;
-  startTimer();
+  const myTimer: NodeJS.Timer = startTimer();
 
   document.getElementById("animation").innerHTML = `
   <div class="timer">
@@ -81,4 +89,9 @@ export const createTimer = () => {
       </span>
   </div>
   `;
+  return myTimer;
+};
+
+export const stopTimer = (myTimer: NodeJS.Timer) => {
+  clearInterval(myTimer);
 };

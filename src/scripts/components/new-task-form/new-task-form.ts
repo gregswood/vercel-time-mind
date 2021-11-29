@@ -37,7 +37,6 @@ export class NewTaskForm {
       completed: false,
       running: false,
     };
-
     storage.addTask(obj);
   }
 
