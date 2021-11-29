@@ -1,16 +1,8 @@
 import { Task } from "../../task";
 import { formatTime } from "../countdown-timer/animated-clock";
-import Storage from "../../components/storage";
-const storage = new Storage();
 
-export const renderIncompleteTasks = () => {
-  const data = storage.readAll();
-  const incompleteTasks = data.filter(
-    (element) => !element.completed && !element.running,
-  );
-  const container = document.getElementById("incomplete-task-list");
-  container.innerHTML = "";
-  incompleteTasks.forEach((element: Task) => {
+export const renderIncompleteTasks = (target, tasks) => {
+  tasks.forEach((element: Task) => {
     const div = document.createElement("div");
     div.innerHTML = `<div data-incomplete-task class="incomplete-task">
     <img
@@ -36,7 +28,7 @@ export const renderIncompleteTasks = () => {
       </div>
     </div>
   </div>`;
-    container.appendChild(div);
+    target.appendChild(div);
   });
 
   const playButtons = document.querySelectorAll(

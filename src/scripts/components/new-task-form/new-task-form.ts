@@ -1,4 +1,5 @@
 import Storage from "../storage";
+import { renderTaskDays } from "../task-day/task-day";
 const storage = new Storage();
 
 export class NewTaskForm {
@@ -35,9 +36,31 @@ export class NewTaskForm {
       remainingTime: totalSeconds,
       totalTime: totalSeconds,
       completed: false,
-      running: false,
+      running: undefined,
     };
     storage.addTask(obj);
+
+    form.reset();
+
+    renderTaskDays();
+
+    const timerPage = document.querySelector(
+      "[data-timer-page]",
+    ) as HTMLElement;
+    timerPage.classList.add("page--hidden");
+
+    const newTaskPage = document.querySelector(
+      "[data-new-task-page]",
+    ) as HTMLElement;
+    newTaskPage.classList.add("page--hidden");
+
+    const infoPage = document.querySelector("[data-info-page]") as HTMLElement;
+    infoPage.classList.add("page--hidden");
+
+    const tasksPage = document.querySelector(
+      "[data-tasks-page]",
+    ) as HTMLElement;
+    tasksPage.classList.remove("page--hidden");
   }
 
   destroy() {

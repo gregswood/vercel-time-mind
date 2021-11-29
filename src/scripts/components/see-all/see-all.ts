@@ -13,13 +13,16 @@ export class SeeAll {
     this.element.addEventListener("click", this.clickListener);
   }
 
-  handleClick() {
-    const incompleteTasks = document.querySelectorAll(
-      "[data-incomplete-task]",
-    ) as NodeListOf<HTMLElement>;
-    incompleteTasks.forEach((task) => {
-      task.classList.toggle("incomplete-task--hidden");
-    });
+  handleClick(event: Event) {
+    const target = event.target as HTMLElement;
+
+    const date = target.dataset.date;
+
+    const incompleteTasks = document.querySelector(
+      `[data-task_date="${date}"]`,
+    ) as HTMLElement;
+
+    incompleteTasks.classList.toggle("incomplete-tasks--hidden");
   }
 
   destroy() {

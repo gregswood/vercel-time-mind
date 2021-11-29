@@ -64,7 +64,7 @@ export const createTimer = () => {
   };
 
   document.getElementById("animation").innerHTML = `...`;
-  const myTimer: NodeJS.Timer = startTimer();
+  const myTimer = startTimer();
 
   document.getElementById("animation").innerHTML = `
   <div class="timer">
@@ -92,6 +92,9 @@ export const createTimer = () => {
   return myTimer;
 };
 
-export const stopTimer = (myTimer: NodeJS.Timer) => {
-  clearInterval(myTimer);
+export const stopTimer = () => {
+  const id = storage
+    .readAll()
+    .filter((element: Task) => element.running)[0].running;
+  clearInterval(id);
 };

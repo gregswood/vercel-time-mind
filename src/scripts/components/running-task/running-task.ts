@@ -23,10 +23,6 @@ export class RunningTask {
       "[data-tasks-page]",
     ) as HTMLElement;
     tasksPage.classList.toggle("page--hidden");
-
-    stopTimer(myTimer);
-    const myNewTimer = createTimer();
-    return myNewTimer;
   }
 
   destroy() {
@@ -35,13 +31,8 @@ export class RunningTask {
 }
 
 import { Task } from "../../task";
-import {
-  createTimer,
-  formatTime,
-  stopTimer,
-} from "../countdown-timer/animated-clock";
+import { formatTime } from "../countdown-timer/animated-clock";
 import Storage from "../../components/storage";
-import { myTimer } from "../../app";
 const storage = new Storage();
 
 export const renderRunningTask = () => {
