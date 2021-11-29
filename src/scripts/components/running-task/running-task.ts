@@ -55,6 +55,8 @@ export const renderRunningTask = () => {
     container.classList.remove("running-task");
     return;
   }
+  container.classList.add("running-task");
+
   incompleteTasks.forEach((element: Task) => {
     const div = document.createElement("div");
     div.innerHTML = `

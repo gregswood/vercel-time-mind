@@ -9,16 +9,22 @@ export const renderInfo = (period = 7) => {
     (task) => datediff(new Date(task.completedDate), new Date()) <= period,
   );
 
+  console.log(completedInPeriod);
+
   const timeDuration = completedInPeriod.reduce(
     (acc, val) => acc + val.totalTime,
     0,
   );
 
+  const hours = Math.floor(timeDuration / 3600);
+  const minutes = Math.floor((timeDuration % 3600) / 60);
+
   const totalTasks = completedInPeriod.length;
 
   const tasksCompletedP = document.querySelector("[data-tasks-completed]");
-  tasksCompletedP.innerHTML = totalTasks.toString();
+  tasksCompletedP.textContent = totalTasks.toString();
 
   const timeDurationP = document.querySelector("[data-time-duration]");
-  timeDurationP.innerHTML = timeDuration.toString();
+  timeDurationP.textContent =
+    hours.toString() + "h " + minutes.toString() + "m";
 };
