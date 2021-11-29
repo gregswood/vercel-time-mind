@@ -2,6 +2,7 @@ import Storage from "../storage";
 import { Task } from "../../task";
 import { renderRunningTask } from "../running-task/running-task";
 import { renderTaskDays } from "../task-day/task-day";
+import { stopTimer } from "../countdown-timer/animated-clock";
 
 const storage = new Storage();
 
@@ -25,9 +26,11 @@ export class CompleteButton {
 
     const runningTask = data.filter((task) => task.running)[0];
 
+    stopTimer();
+
     storage.updateTimer(runningTask.taskName, "completed", true);
     storage.updateTimer(runningTask.taskName, "timeRemaining", 0);
-    storage.updateTimer(runningTask.taskName, "running", false);
+    storage.updateTimer(runningTask.taskName, "running", 0);
     storage.updateTimer(
       runningTask.taskName,
       "completedDate",

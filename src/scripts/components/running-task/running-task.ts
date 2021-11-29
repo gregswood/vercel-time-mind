@@ -45,7 +45,7 @@ const storage = new Storage();
 export const renderRunningTask = () => {
   const data = storage.readAll();
   const incompleteTasks = data.filter((element) => element.running);
-
+  console.log(incompleteTasks);
   const container = document.getElementById("running-task-box");
   container.innerHTML = "";
   if (incompleteTasks.length === 0) {
