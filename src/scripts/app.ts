@@ -104,6 +104,16 @@ import("./components/delete-button/delete-button").then(({ DeleteButton }) => {
   new DeleteButton(deleteButton);
 });
 
+const completeButton = document.querySelector(
+  "[data-complete-task]",
+) as HTMLElement;
+
+import("./components/complete-button/complete-button").then(
+  ({ CompleteButton }) => {
+    new CompleteButton(completeButton);
+  },
+);
+
 const periodButtons = document.getElementsByClassName(
   "period-toggle__option",
 ) as HTMLCollectionOf<HTMLElement>;

@@ -21,7 +21,7 @@ export default class Storage {
   updateTimer(
     name: string,
     key: string,
-    newValue: "string" | number | boolean | NodeJS.Timer,
+    newValue: string | number | boolean | NodeJS.Timer,
   ) {
     const timer = JSON.parse(localStorage.getItem(name));
     timer[key] = newValue;
