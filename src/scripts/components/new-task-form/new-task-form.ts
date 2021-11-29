@@ -1,4 +1,3 @@
-import { renderIncompleteTasks } from "../incomplete-tasks/incomplete-tasks";
 import Storage from "../storage";
 import { renderTaskDays } from "../task-day/task-day";
 const storage = new Storage();
@@ -68,3 +67,23 @@ export class NewTaskForm {
     this.element.removeEventListener("submit", this.clickListener);
   }
 }
+
+export const setMaxDate = () => {
+  const today = new Date();
+  const dd = today.getDate();
+  const mm = today.getMonth() + 1; //January is 0!
+  const yyyy = today.getFullYear().toString();
+
+  let dayString = dd.toString();
+  if (dd < 10) {
+    dayString = "0" + dd;
+  }
+
+  let monthString = mm.toString();
+  if (mm < 10) {
+    monthString = "0" + mm;
+  }
+
+  const dateString = yyyy + "-" + monthString + "-" + dayString;
+  document.getElementById("date-field").setAttribute("min", dateString);
+};

@@ -1,4 +1,5 @@
 import { renderIncompleteTasks } from "../incomplete-tasks/incomplete-tasks";
+import { Task } from "../../task";
 import Storage from "../storage";
 const storage = new Storage();
 
@@ -77,10 +78,22 @@ export const renderTaskDays = () => {
     incompleteTasks.dataset["task_date"] = day[0];
 
     // render incomplete tasks to div
-    renderIncompleteTasks(incompleteTasks, day[1]);
+    renderIncompleteTasks(incompleteTasks, day[1] as Task[]);
 
     taskDay.appendChild(incompleteTasks);
 
     taskDays.appendChild(taskDay);
+  }
+
+  const seeAlls = document.querySelectorAll(
+    "[data-see_all]",
+  ) as NodeListOf<HTMLElement>;
+
+  if (seeAlls.length > 0) {
+    import("../see-all/see-all").then(({ SeeAll }) => {
+      seeAlls.forEach((seeAll) => {
+        new SeeAll(seeAll);
+      });
+    });
   }
 };

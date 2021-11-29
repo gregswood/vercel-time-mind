@@ -1,7 +1,7 @@
 import { Task } from "../../task";
 import { formatTime } from "../countdown-timer/animated-clock";
 
-export const renderIncompleteTasks = (target, tasks) => {
+export const renderIncompleteTasks = (target: HTMLElement, tasks: Task[]) => {
   tasks.forEach((element: Task) => {
     const div = document.createElement("div");
     div.innerHTML = `<div data-incomplete-task class="incomplete-task">

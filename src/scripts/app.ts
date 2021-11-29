@@ -2,21 +2,13 @@ import { renderTaskDays } from "./components/task-day/task-day";
 import Storage from "./components/storage";
 const storage = new Storage();
 import { renderRunningTask } from "./components/running-task/running-task";
+import { renderInfo } from "./components/info-block/info-block";
+import { setMaxDate } from "./components/new-task-form/new-task-form";
 import { createTimer } from "./components/countdown-timer/animated-clock";
 
 renderTaskDays();
-
-const seeAlls = document.querySelectorAll(
-  "[data-see_all]",
-) as NodeListOf<HTMLElement>;
-
-if (seeAlls.length > 0) {
-  import("./components/see-all/see-all").then(({ SeeAll }) => {
-    seeAlls.forEach((seeAll) => {
-      new SeeAll(seeAll);
-    });
-  });
-}
+renderInfo();
+setMaxDate();
 
 const runningTask = document.querySelector(
   "[data-running-task]",
@@ -106,3 +98,12 @@ if (playButtons.length > 0) {
     });
   });
 }
+
+const periodButtons = document.getElementsByClassName(
+  "period-toggle__option",
+) as HTMLCollectionOf<HTMLElement>;
+import("./components/period-toggle/period-toggle").then(({ PeriodToggle }) => {
+  Array.from(periodButtons).forEach((button) => {
+    new PeriodToggle(button);
+  });
+});
