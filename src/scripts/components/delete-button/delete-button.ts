@@ -1,4 +1,10 @@
-export class TasksButton {
+import { renderTaskDays } from "../task-day/task-day";
+import Storage from "../storage";
+import { Task } from "../../task";
+import { renderRunningTask } from "../running-task/running-task";
+const storage = new Storage();
+
+export class DeleteButton {
   element: HTMLElement;
   clickListener: EventListener;
 
@@ -14,25 +20,24 @@ export class TasksButton {
   }
 
   handleClick() {
+    const data = storage.readAll() as Task[];
+
+    const runningTask = data.filter((task) => task.running)[0];
+
+    storage.deleteTime(runningTask.taskName);
+
+    renderRunningTask();
+
     const timerPage = document.querySelector(
       "[data-timer-page]",
     ) as HTMLElement;
     timerPage.classList.add("page--hidden");
-
-    const newTaskPage = document.querySelector(
-      "[data-new-task-page]",
-    ) as HTMLElement;
-    newTaskPage.classList.add("page--hidden");
-
-    const infoPage = document.querySelector("[data-info-page]") as HTMLElement;
-    infoPage.classList.add("page--hidden");
 
     const tasksPage = document.querySelector(
       "[data-tasks-page]",
     ) as HTMLElement;
     tasksPage.classList.remove("page--hidden");
   }
-
   destroy() {
     this.element.removeEventListener("click", this.clickListener);
   }

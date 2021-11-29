@@ -93,6 +93,14 @@ if (playButtons.length > 0) {
   });
 }
 
+const deleteButton = document.querySelector(
+  "[data-delete-task]",
+) as HTMLElement;
+
+import("./components/delete-button/delete-button").then(({ DeleteButton }) => {
+  new DeleteButton(deleteButton);
+});
+
 const periodButtons = document.getElementsByClassName(
   "period-toggle__option",
 ) as HTMLCollectionOf<HTMLElement>;
