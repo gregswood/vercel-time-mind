@@ -21,17 +21,18 @@ export class PlayButton {
   }
 
   handleClick() {
+    if (myTimer) {
+      stopTimer(myTimer);
+    }
     const runningTask = storage.readAll().filter((i) => i.running);
     if (runningTask.length) {
       storage.updateTimer(runningTask[0].taskName, "running", false);
     }
     storage.updateTimer(this.element.dataset.task, "running", true);
+    const myNewTimer = createTimer();
     renderRunningTask();
     renderIncompleteTasks();
-    if (myTimer) {
-      stopTimer(myTimer);
-    }
-    createTimer();
+    return myNewTimer;
   }
   destroy() {
     this.element.removeEventListener("click", this.clickListener);

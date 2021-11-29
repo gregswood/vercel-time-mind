@@ -40,7 +40,7 @@ export const createTimer = () => {
 
   const startTimer = () => {
     timerInterval = setInterval(() => {
-      timePassed = timePassed += 1;
+      timePassed++;
       if (TIME_LIMIT - timePassed < 0) {
         timeLeft = 0;
         storage.updateTimer(runningTask[0].taskName, "remainingTime", timeLeft);

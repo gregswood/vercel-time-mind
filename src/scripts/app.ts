@@ -2,9 +2,14 @@ import Storage from "./components/storage";
 const storage = new Storage();
 import { renderIncompleteTasks } from "./components/incomplete-tasks/incomplete-tasks";
 import { renderRunningTask } from "./components/running-task/running-task";
-import { createTimer } from "./components/countdown-timer/animated-clock";
+import {
+  createTimer,
+  stopTimer,
+} from "./components/countdown-timer/animated-clock";
 
 const seeAll = document.querySelector("[data-see-all]") as HTMLElement;
+
+export let myTimer: NodeJS.Timer;
 
 if (seeAll) {
   import("./components/see-all/see-all").then(({ SeeAll }) => {
@@ -72,11 +77,11 @@ if (backButtons.length > 0) {
   });
 }
 
-export let myTimer: NodeJS.Timer;
 renderIncompleteTasks();
 renderRunningTask();
 if (storage.readAll().filter((element) => element.running).length) {
-  const myTimer = createTimer();
+  stopTimer(myTimer);
+  myTimer = createTimer();
 }
 
 const newTaskForm = document.querySelector(
@@ -96,7 +101,8 @@ const playButtons = document.querySelectorAll(
 if (playButtons.length > 0) {
   import("./components/play-button/play-button").then(({ PlayButton }) => {
     playButtons.forEach((playButton) => {
-      new PlayButton(playButton);
+      const player = new PlayButton(playButton);
+      myTimer = player.handleClick();
     });
   });
 }
