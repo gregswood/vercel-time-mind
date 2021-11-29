@@ -30,7 +30,8 @@ export class PauseButton {
   </button>
   <p class="timer-control__label">Play</p>`;
     this.element.id = "play";
-    this.element.classList.add(runningTask[0].taskName);
+    this.element.classList.add(runningTask[0].taskName.replace(" ", "-"));
+    this.destroy();
     const playTimerButton = document.getElementById("play") as HTMLFormElement;
     if (playTimerButton) {
       import("./play").then(({ PlayTimerButton }) => {

@@ -18,11 +18,10 @@ export class PlayTimerButton {
   }
 
   handleClick() {
-    const myTask = storage.readOne(this.element.classList[1]);
-    console.log(myTask);
-    storage.updateTimer(myTask, "running", 1);
+    const myTask = storage.readOne(this.element.classList[1].replace("-", " "));
+    storage.updateTimer(myTask.taskName, "running", 1);
     const myNewTimer = createTimer();
-    storage.updateTimer(myTask, "running", myNewTimer);
+    storage.updateTimer(myTask.taskName, "running", myNewTimer);
     this.element.innerHTML = `<button  class="round-button round-button__timer-control">
     <img
       src="https://res.cloudinary.com/space48/image/upload/v1637927613/pause_hen8g3.png"
@@ -30,6 +29,7 @@ export class PlayTimerButton {
   </button>
   <p class="timer-control__label">Pause</p>`;
     this.element.id = "pause";
+    this.destroy();
     const pauseButton = document.getElementById("pause") as HTMLFormElement;
     if (pauseButton) {
       import("./pause").then(({ PauseButton }) => {
