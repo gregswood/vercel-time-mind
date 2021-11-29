@@ -1,10 +1,7 @@
 import { renderTaskDays } from "./components/task-day/task-day";
-import Storage from "./components/storage";
-const storage = new Storage();
 import { renderRunningTask } from "./components/running-task/running-task";
 import { renderInfo } from "./components/info-block/info-block";
 import { setMaxDate } from "./components/new-task-form/new-task-form";
-import { createTimer } from "./components/countdown-timer/animated-clock";
 
 renderTaskDays();
 renderInfo();
@@ -93,6 +90,12 @@ if (playButtons.length > 0) {
   });
 }
 
+const pauseButton = document.getElementById("pause") as HTMLFormElement;
+if (pauseButton) {
+  import("./components/timer-controls/pause").then(({ PauseButton }) => {
+    new PauseButton(pauseButton);
+  });
+}
 const deleteButton = document.querySelector(
   "[data-delete-task]",
 ) as HTMLElement;
