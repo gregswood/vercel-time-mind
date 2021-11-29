@@ -6,7 +6,9 @@ const storage = new Storage();
 export const renderTaskDays = () => {
   const data = storage.readAll();
 
-  const incompleteTasks = data.filter((task) => !task.completed);
+  const incompleteTasks = data
+    .filter((task) => !task.completed)
+    .filter((task) => !task.running);
 
   const dayGroups = incompleteTasks.reduce((acc, val) => {
     if (Object.prototype.hasOwnProperty.call(acc, val.scheduledDate)) {
@@ -83,6 +85,18 @@ export const renderTaskDays = () => {
     taskDay.appendChild(incompleteTasks);
 
     taskDays.appendChild(taskDay);
+
+    const playButtons = document.querySelectorAll(
+      ".playbutton",
+    ) as NodeListOf<HTMLImageElement>;
+
+    if (playButtons.length > 0) {
+      import("../play-button/play-button").then(({ PlayButton }) => {
+        playButtons.forEach((playButton) => {
+          new PlayButton(playButton);
+        });
+      });
+    }
   }
 
   const seeAlls = document.querySelectorAll(

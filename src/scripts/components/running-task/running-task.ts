@@ -1,5 +1,3 @@
-import { createTimer } from "../countdown-timer/animated-clock";
-
 export class RunningTask {
   element: HTMLElement;
   clickListener: EventListener;

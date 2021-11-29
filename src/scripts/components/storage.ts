@@ -1,7 +1,7 @@
 import { Task } from "../task";
 
 export default class Storage {
-  readAll() {
+  readAll(): Task[] {
     const titleArray = [...Array(localStorage.length).keys()]
       .slice()
       .map((i) => localStorage.key(i));
@@ -21,7 +21,7 @@ export default class Storage {
   updateTimer(
     name: string,
     key: string,
-    newValue: "string" | number | boolean,
+    newValue: "string" | number | boolean | NodeJS.Timer,
   ) {
     const timer = JSON.parse(localStorage.getItem(name));
     timer[key] = newValue;

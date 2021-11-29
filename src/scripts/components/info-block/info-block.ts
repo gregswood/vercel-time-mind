@@ -2,16 +2,10 @@ import Storage from "../storage";
 const storage = new Storage();
 
 export const renderInfo = (period = 7) => {
-  const timePeriod = period;
-
-  const today = new Date();
-
-  const pastDate = today.getDate() - timePeriod;
-
   const data = storage.readAll();
 
   const completedInPeriod = data.filter(
-    (task) => task.completedDate > pastDate && task.completedDate <= today,
+    (task) => datediff(new Date(task.completedDate), new Date()) <= period,
   );
 
   const timeDuration = completedInPeriod.reduce(
@@ -26,4 +20,12 @@ export const renderInfo = (period = 7) => {
 
   const timeDurationP = document.querySelector("[data-time-duration]");
   timeDurationP.innerHTML = timeDuration.toString();
+};
+
+const datediff = (first: Date, second: Date) => {
+  // Take the difference between the dates and divide by milliseconds per day.
+  // Round to nearest whole number to deal with DST.
+  return Math.round(
+    (second.valueOf() - first.valueOf()) / (1000 * 60 * 60 * 24),
+  );
 };

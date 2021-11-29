@@ -9,6 +9,7 @@ import { createTimer } from "./components/countdown-timer/animated-clock";
 renderTaskDays();
 renderInfo();
 setMaxDate();
+renderRunningTask();
 
 const runningTask = document.querySelector(
   "[data-running-task]",
@@ -68,13 +69,6 @@ if (backButtons.length > 0) {
       new BackButton(backButton);
     });
   });
-}
-
-export let myTimer: NodeJS.Timer;
-
-renderRunningTask();
-if (storage.readAll().filter((element) => element.running).length) {
-  const myTimer = createTimer();
 }
 
 const newTaskForm = document.querySelector(

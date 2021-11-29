@@ -40,7 +40,7 @@ export const createTimer = () => {
 
   const startTimer = () => {
     timerInterval = setInterval(() => {
-      timePassed = timePassed += 1;
+      timePassed++;
       if (TIME_LIMIT - timePassed < 0) {
         timeLeft = 0;
         storage.updateTimer(runningTask[0].taskName, "remainingTime", timeLeft);
@@ -64,7 +64,7 @@ export const createTimer = () => {
   };
 
   document.getElementById("animation").innerHTML = `...`;
-  const myTimer: NodeJS.Timer = startTimer();
+  const myTimer = startTimer();
 
   document.getElementById("animation").innerHTML = `
   <div class="timer">
@@ -92,6 +92,9 @@ export const createTimer = () => {
   return myTimer;
 };
 
-export const stopTimer = (myTimer: NodeJS.Timer) => {
-  clearInterval(myTimer);
+export const stopTimer = () => {
+  const id = storage
+    .readAll()
+    .filter((element: Task) => element.running)[0].running;
+  clearInterval(id);
 };

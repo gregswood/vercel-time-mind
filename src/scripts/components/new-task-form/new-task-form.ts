@@ -36,7 +36,7 @@ export class NewTaskForm {
       remainingTime: totalSeconds,
       totalTime: totalSeconds,
       completed: false,
-      running: false,
+      running: undefined,
     };
     storage.addTask(obj);
 

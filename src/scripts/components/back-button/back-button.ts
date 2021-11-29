@@ -1,3 +1,5 @@
+import { renderTaskDays } from "../task-day/task-day";
+
 export class BackButton {
   element: HTMLElement;
   clickListener: EventListener;
@@ -31,6 +33,8 @@ export class BackButton {
       "[data-tasks-page]",
     ) as HTMLElement;
     tasksPage.classList.remove("page--hidden");
+
+    renderTaskDays();
   }
   destroy() {
     this.element.removeEventListener("click", this.clickListener);

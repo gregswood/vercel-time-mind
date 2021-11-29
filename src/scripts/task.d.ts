@@ -4,8 +4,9 @@ export type Task = {
   priority: "low" | "medium" | "high";
   totalTime: number;
   remainingTime: number;
-  scheduledDate: Date;
+  scheduledDate: string;
+  completedDate: string;
   iconType: "weights" | "book" | "computer";
-  running: boolean;
+  running: NodeJS.Timer | undefined;
   completed: boolean;
 };
