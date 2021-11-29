@@ -14,6 +14,13 @@ export class RunningTask {
   }
 
   handleClick() {
+    const data = storage.readAll();
+    const incompleteTasks = data.filter((element) => element.running);
+
+    if (incompleteTasks.length === 0) {
+      return;
+    }
+
     const timerPage = document.querySelector(
       "[data-timer-page]",
     ) as HTMLElement;
@@ -41,6 +48,13 @@ export const renderRunningTask = () => {
 
   const container = document.getElementById("running-task-box");
   container.innerHTML = "";
+  if (incompleteTasks.length === 0) {
+    const h2 = document.createElement("h2");
+    h2.textContent = "Start a timer!";
+    container.appendChild(h2);
+    container.classList.remove("running-task");
+    return;
+  }
   incompleteTasks.forEach((element: Task) => {
     const div = document.createElement("div");
     div.innerHTML = `

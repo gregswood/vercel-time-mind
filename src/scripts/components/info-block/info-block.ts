@@ -1,4 +1,5 @@
 import Storage from "../storage";
+import { datediff } from "../../../utils/date";
 const storage = new Storage();
 
 export const renderInfo = (period = 7) => {
@@ -20,12 +21,4 @@ export const renderInfo = (period = 7) => {
 
   const timeDurationP = document.querySelector("[data-time-duration]");
   timeDurationP.innerHTML = timeDuration.toString();
-};
-
-const datediff = (first: Date, second: Date) => {
-  // Take the difference between the dates and divide by milliseconds per day.
-  // Round to nearest whole number to deal with DST.
-  return Math.round(
-    (second.valueOf() - first.valueOf()) / (1000 * 60 * 60 * 24),
-  );
 };

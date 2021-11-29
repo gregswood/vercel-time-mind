@@ -34,7 +34,6 @@ export const renderIncompleteTasks = (target: HTMLElement, tasks: Task[]) => {
   const playButtons = document.querySelectorAll(
     ".playbutton",
   ) as NodeListOf<HTMLImageElement>;
-  console.log(playButtons);
   if (playButtons.length > 0) {
     import("../play-button/play-button").then(({ PlayButton }) => {
       playButtons.forEach((playButton) => {

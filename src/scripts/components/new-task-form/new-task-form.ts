@@ -26,10 +26,9 @@ export class NewTaskForm {
 
     let obj: any = Object.fromEntries(formData.entries());
 
-    const { hours, minutes, seconds, ...rest } = obj;
+    const { hours, minutes, ...rest } = obj;
 
-    const totalSeconds =
-      Number(seconds) + Number(minutes) * 60 + Number(hours) * 60 * 60;
+    const totalSeconds = Number(minutes) * 60 + Number(hours) * 60 * 60;
 
     obj = {
       ...rest,
