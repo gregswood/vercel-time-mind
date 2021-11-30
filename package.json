@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "parcel --no-cache --https",
     "clean": "rimraf dist",
-    "build": "npm run clean && parcel build",
+    "build": "npm run clean && parcel build --log-level verbose",
     "setup": "npm ci",
     "postinstall": "husky install",
     "lint-staged": "lint-staged",
