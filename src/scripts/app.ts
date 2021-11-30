@@ -3,22 +3,6 @@ import { renderRunningTask } from "./components/running-task/running-task";
 import { renderInfo } from "./components/info-block/info-block";
 import { setMaxDate } from "./components/new-task-form/new-task-form";
 
-const runningTaskImport = import("./components/running-task/running-task");
-const tasksButtonImport = import("./components/tasks-button/tasks-button");
-const infoButtonImport = import("./components/info-button/info-button");
-const newTaskButtonImport = import(
-  "./components/new-task-button/new-task-button"
-);
-const backButtonImport = import("./components/back-button/back-button");
-const newTaskFormImport = import("./components/new-task-form/new-task-form");
-const playButtonImport = import("./components/play-button/play-button");
-const pauseImport = import("./components/timer-controls/pause");
-const deleteButtonImport = import("./components/delete-button/delete-button");
-const completeButtonImport = import(
-  "./components/complete-button/complete-button"
-);
-const periodToggleImport = import("./components/period-toggle/period-toggle");
-
 renderTaskDays();
 renderInfo();
 setMaxDate();
@@ -29,7 +13,7 @@ const runningTask = document.querySelector(
 ) as HTMLElement;
 
 if (runningTask) {
-  runningTaskImport.then(({ RunningTask }) => {
+  import("./components/running-task/running-task").then(({ RunningTask }) => {
     new RunningTask(runningTask);
   });
 }
@@ -39,7 +23,7 @@ const tasksButtons = document.querySelectorAll(
 ) as NodeListOf<HTMLElement>;
 
 if (tasksButtons.length > 0) {
-  tasksButtonImport.then(({ TasksButton }) => {
+  import("./components/tasks-button/tasks-button").then(({ TasksButton }) => {
     tasksButtons.forEach((tasksButton) => {
       new TasksButton(tasksButton);
     });
@@ -51,7 +35,7 @@ const infoButtons = document.querySelectorAll(
 ) as NodeListOf<HTMLElement>;
 
 if (infoButtons.length > 1) {
-  infoButtonImport.then(({ InfoButton }) => {
+  import("./components/info-button/info-button").then(({ InfoButton }) => {
     infoButtons.forEach((infoButton) => {
       new InfoButton(infoButton);
     });
@@ -63,11 +47,13 @@ const newTaskButtons = document.querySelectorAll(
 ) as NodeListOf<HTMLElement>;
 
 if (newTaskButtons.length > 1) {
-  newTaskButtonImport.then(({ NewTaskButton }) => {
-    newTaskButtons.forEach((newTaskButton) => {
-      new NewTaskButton(newTaskButton);
-    });
-  });
+  import("./components/new-task-button/new-task-button").then(
+    ({ NewTaskButton }) => {
+      newTaskButtons.forEach((newTaskButton) => {
+        new NewTaskButton(newTaskButton);
+      });
+    },
+  );
 }
 
 const backButtons = document.querySelectorAll(
@@ -75,7 +61,7 @@ const backButtons = document.querySelectorAll(
 ) as NodeListOf<HTMLElement>;
 
 if (backButtons.length > 0) {
-  backButtonImport.then(({ BackButton }) => {
+  import("./components/back-button/back-button").then(({ BackButton }) => {
     backButtons.forEach((backButton) => {
       new BackButton(backButton);
     });
@@ -87,7 +73,7 @@ const newTaskForm = document.querySelector(
 ) as HTMLFormElement;
 
 if (newTaskForm) {
-  newTaskFormImport.then(({ NewTaskForm }) => {
+  import("./components/new-task-form/new-task-form").then(({ NewTaskForm }) => {
     new NewTaskForm(newTaskForm);
   });
 }
@@ -97,7 +83,7 @@ const playButtons = document.querySelectorAll(
 ) as NodeListOf<HTMLImageElement>;
 
 if (playButtons.length > 0) {
-  playButtonImport.then(({ PlayButton }) => {
+  import("./components/play-button/play-button").then(({ PlayButton }) => {
     playButtons.forEach((playButton) => {
       new PlayButton(playButton);
     });
@@ -106,7 +92,7 @@ if (playButtons.length > 0) {
 
 const pauseButton = document.getElementById("pause") as HTMLFormElement;
 if (pauseButton) {
-  pauseImport.then(({ PauseButton }) => {
+  import("./components/timer-controls/pause").then(({ PauseButton }) => {
     new PauseButton(pauseButton);
   });
 }
@@ -114,7 +100,7 @@ const deleteButton = document.querySelector(
   "[data-delete-task]",
 ) as HTMLElement;
 
-deleteButtonImport.then(({ DeleteButton }) => {
+import("./components/delete-button/delete-button").then(({ DeleteButton }) => {
   new DeleteButton(deleteButton);
 });
 
@@ -122,14 +108,16 @@ const completeButton = document.querySelector(
   "[data-complete-task]",
 ) as HTMLElement;
 
-completeButtonImport.then(({ CompleteButton }) => {
-  new CompleteButton(completeButton);
-});
+import("./components/complete-button/complete-button").then(
+  ({ CompleteButton }) => {
+    new CompleteButton(completeButton);
+  },
+);
 
 const periodButtons = document.getElementsByClassName(
   "period-toggle__option",
 ) as HTMLCollectionOf<HTMLElement>;
-periodToggleImport.then(({ PeriodToggle }) => {
+import("./components/period-toggle/period-toggle").then(({ PeriodToggle }) => {
   Array.from(periodButtons).forEach((button) => {
     new PeriodToggle(button);
   });
