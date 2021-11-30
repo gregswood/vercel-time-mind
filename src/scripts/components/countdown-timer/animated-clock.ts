@@ -1,4 +1,5 @@
 import { Task } from "../../task";
+import { beep } from "../beep/beep";
 import { renderTimerPage } from "../render-timer-page/render-timer-page";
 import { renderRunningTask } from "../running-task/running-task";
 import Storage from "../storage";
@@ -47,6 +48,8 @@ export const createTimer = () => {
         storage.updateTimer(runningTask[0].taskName, "remainingTime", timeLeft);
         storage.updateTimer(runningTask[0].taskName, "running", false);
         storage.updateTimer(runningTask[0].taskName, "completed", true);
+      } else if (TIME_LIMIT - timePassed === 0) {
+        beep();
       } else {
         timeLeft = TIME_LIMIT - timePassed;
         storage.updateTimer(runningTask[0].taskName, "remainingTime", timeLeft);
