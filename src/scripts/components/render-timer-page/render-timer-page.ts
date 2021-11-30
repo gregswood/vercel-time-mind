@@ -95,5 +95,21 @@ export const renderTimerPage = () => {
         });
       });
     }
+
+    const deleteButton = document.querySelector(
+      "[data-delete-task]",
+    ) as HTMLElement;
+
+    import("../delete-button/delete-button").then(({ DeleteButton }) => {
+      new DeleteButton(deleteButton);
+    });
+
+    const completeButton = document.querySelector(
+      "[data-complete-task]",
+    ) as HTMLElement;
+
+    import("../complete-button/complete-button").then(({ CompleteButton }) => {
+      new CompleteButton(completeButton);
+    });
   }
 };
