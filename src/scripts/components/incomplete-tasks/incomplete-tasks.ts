@@ -1,13 +1,26 @@
 import { Task } from "../../task";
 import { formatTime } from "../countdown-timer/animated-clock";
 
+const iconMap = {
+  Weights:
+    "https://res.cloudinary.com/space48/image/upload/v1637838942/weight_kfdzmi.png",
+  Computer:
+    "https://res.cloudinary.com/space48/image/upload/v1637843038/laptop_wdgxmp.png",
+  Book: "https://res.cloudinary.com/space48/image/upload/v1637842874/book_ycntva.png",
+  weights:
+    "https://res.cloudinary.com/space48/image/upload/v1637838942/weight_kfdzmi.png",
+  computer:
+    "https://res.cloudinary.com/space48/image/upload/v1637843038/laptop_wdgxmp.png",
+  book: "https://res.cloudinary.com/space48/image/upload/v1637842874/book_ycntva.png",
+};
+
 export const renderIncompleteTasks = (target: HTMLElement, tasks: Task[]) => {
   tasks.forEach((element: Task) => {
     const div = document.createElement("div");
     div.innerHTML = `<div data-incomplete-task class="incomplete-task">
     <img
       class="incomplete-task__icon"
-      src="https://res.cloudinary.com/space48/image/upload/v1637838942/weight_kfdzmi.png"
+      src="${iconMap[element.iconType]}"
     />
     <div class="incomplete-task__rows">
       <div class="incomplete-task__row">
@@ -17,7 +30,7 @@ export const renderIncompleteTasks = (target: HTMLElement, tasks: Task[]) => {
         )}</p>
       </div>
       <div class="incomplete-task__row">
-        <div class="category">
+        <div class="category category--${element.priority}">
           <p class="category__text">${element.category}</p>
         </div>
         <img

@@ -9,8 +9,6 @@ export const renderInfo = (period = 7) => {
     (task) => datediff(new Date(task.completedDate), new Date()) <= period,
   );
 
-  console.log(completedInPeriod);
-
   const timeDuration = completedInPeriod.reduce(
     (acc, val) => acc + val.totalTime,
     0,
