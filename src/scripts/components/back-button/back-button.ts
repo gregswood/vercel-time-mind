@@ -1,3 +1,4 @@
+import { renderRunningTask } from "../running-task/running-task";
 import { renderTaskDays } from "../task-day/task-day";
 
 export class BackButton {
@@ -35,6 +36,7 @@ export class BackButton {
     tasksPage.classList.remove("page--hidden");
 
     renderTaskDays();
+    renderRunningTask();
   }
   destroy() {
     this.element.removeEventListener("click", this.clickListener);

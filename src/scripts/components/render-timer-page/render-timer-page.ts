@@ -15,17 +15,17 @@ export const renderTimerPage = () => {
   } else {
     container.innerHTML = `
     <div data-timer-box>
-    <div class="task-title-box">
-      <img
-        src="https://res.cloudinary.com/space48/image/upload/v1637842127/time_r2npkx.png"
-        class="task-title-box__timer-icon"
-      />
-      <p class="task-title-box__title">${runningTask[0].taskName}</p>
-    </div>
-    <div class="category">
-    <p class="category__text">${runningTask[0].category}</p>
-  </div>
-    <div class="countdown-timer" id="animation"></div>
-  </div>`;
+      <div class="task-title-box">
+        <img
+          src="https://res.cloudinary.com/space48/image/upload/v1637842127/time_r2npkx.png"
+          class="task-title-box__timer-icon"
+        />
+        <p class="task-title-box__title">${runningTask[0].taskName}</p>
+      </div>
+      <div class="category">
+        <p class="category__text">${runningTask[0].category}</p>
+      </div>
+      <div class="countdown-timer" id="animation"></div>
+    </div>`;
   }
 };
