@@ -1,7 +1,13 @@
 import { renderTaskDays } from "./components/task-day/task-day";
-import { renderRunningTask } from "./components/running-task/running-task";
+import {
+  renderRunningTask,
+  RunningTask,
+} from "./components/running-task/running-task";
 import { renderInfo } from "./components/info-block/info-block";
-import { setMaxDate } from "./components/new-task-form/new-task-form";
+import {
+  setMaxDate,
+  NewTaskForm,
+} from "./components/new-task-form/new-task-form";
 
 renderTaskDays();
 renderInfo();
@@ -13,9 +19,7 @@ const runningTask = document.querySelector(
 ) as HTMLElement;
 
 if (runningTask) {
-  import("./components/running-task/running-task").then(({ RunningTask }) => {
-    new RunningTask(runningTask);
-  });
+  new RunningTask(runningTask);
 }
 
 const tasksButtons = document.querySelectorAll(
@@ -73,9 +77,7 @@ const newTaskForm = document.querySelector(
 ) as HTMLFormElement;
 
 if (newTaskForm) {
-  import("./components/new-task-form/new-task-form").then(({ NewTaskForm }) => {
-    new NewTaskForm(newTaskForm);
-  });
+  new NewTaskForm(newTaskForm);
 }
 
 const playButtons = document.querySelectorAll(
