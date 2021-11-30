@@ -30,18 +30,18 @@ export class TasksButton {
     ) as HTMLElement;
     newTaskPage.classList.add("page--hidden");
 
-    const tasksPage = document.querySelector(
-      "[data-tasks-page]",
+    const timerPage = document.querySelector(
+      "[data-timer-page]",
     ) as HTMLElement;
-    tasksPage.classList.add("page--hidden");
+    timerPage.classList.add("page--hidden");
 
     const infoPage = document.querySelector("[data-info-page]") as HTMLElement;
     infoPage.classList.add("page--hidden");
 
-    const timerPage = document.querySelector(
-      "[data-timer-page]",
+    const tasksPage = document.querySelector(
+      "[data-tasks-page]",
     ) as HTMLElement;
-    timerPage.classList.remove("page--hidden");
+    tasksPage.classList.remove("page--hidden");
   }
 
   destroy() {
