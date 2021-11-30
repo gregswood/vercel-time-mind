@@ -18,7 +18,13 @@ export class PlayTimerButton {
   }
 
   handleClick() {
-    const myTask = storage.readOne(this.element.classList[1].replace("-", " "));
+    console.log(this.element.classList[this.element.classList.length - 1]);
+    const myTask = storage.readOne(
+      this.element.classList[this.element.classList.length - 1].replace(
+        "-",
+        " ",
+      ),
+    );
     storage.updateTimer(myTask.taskName, "running", 1);
     const myNewTimer = createTimer();
     storage.updateTimer(myTask.taskName, "running", myNewTimer);
